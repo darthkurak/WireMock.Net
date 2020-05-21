@@ -13,14 +13,16 @@ namespace WireMock.ResponseBuilders
         /// </summary>
         /// <param name="proxyUrl">The proxy url.</param>
         /// <param name="clientX509Certificate2ThumbprintOrSubjectName">The X509Certificate2 file to use for client authentication.</param>
+        /// <param name="prefixToRemoveFromLocalPath">Prefix to remove from request path</param>
         /// <returns>A <see cref="IResponseBuilder"/>.</returns>
-        IResponseBuilder WithProxy([NotNull] string proxyUrl, [CanBeNull] string clientX509Certificate2ThumbprintOrSubjectName = null);
+        IResponseBuilder WithProxy([NotNull] string proxyUrl, [CanBeNull] string clientX509Certificate2ThumbprintOrSubjectName = null, string prefixToRemoveFromLocalPath = null);
 
         /// <summary>
         /// WithProxy using IProxyAndRecordSettings.
         /// </summary>
         /// <param name="settings">The IProxyAndRecordSettings.</param>
+        /// <param name="prefixToRemoveFromLocalPath">Prefix to remove from request path</param>
         /// <returns>A <see cref="IResponseBuilder"/>.</returns>
-        IResponseBuilder WithProxy([NotNull] IProxyAndRecordSettings settings);
+        IResponseBuilder WithProxy([NotNull] IProxyAndRecordSettings settings, string prefixToRemoveFromLocalPath = null);
     }
 }

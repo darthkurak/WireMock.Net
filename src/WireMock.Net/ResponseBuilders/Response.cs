@@ -352,7 +352,7 @@ namespace WireMock.ResponseBuilders
                 var requestUri = new Uri(requestMessage.Url);
 
                 // Build the proxy url and skip duplicates
-                string extra = RemoveFirstOccurrence(requestUri.LocalPath.TrimEnd('/'), new Uri(ProxyUrl).LocalPath.TrimEnd('/'));
+                string extra = RemoveFirstOccurrence(requestUri.LocalPath.Replace(PrefixToRemoveFromLocalPath, "").TrimEnd('/'), new Uri(ProxyUrl).LocalPath.TrimEnd('/'));
                 requestMessage.ProxyUrl = ProxyUrl + extra + requestUri.Query;
 
                 return await HttpClientHelper.SendAsync(
